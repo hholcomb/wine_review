@@ -1,7 +1,7 @@
 <h1>Wines</h1>
-<p>Available as of 28 March 1946</p>
+<p>Available as of <%= @available_at %></p>
 <ol>
-   <li>Wine 1a</li>
-   <li>Wine 2b</li>
-   <li>Wine 3c</li>
+   <% @wines.each do |wine| %>
+     <li><%= wine.name %> from <%= wine.year %></li>
+   <% end %>
  </ol>  
