@@ -2,13 +2,15 @@ class WinesController < ApplicationController
 
    before_filter :check_for_cancel, :only => [:create, :edit]
 
+   before_action :set_wine_param, only: [ :show, :edit, :update, :destroy ]
+
    def index
    	  @available_at = Time.now
    	  @wines = Wine.all
    end
 
    def show
-   	   @wine = Wine.find(params[:id])
+   	   
    end
 
    def new
@@ -22,17 +24,15 @@ class WinesController < ApplicationController
    end
 
    def edit
-   	   @wine = Wine.find(params[:id])
+   	   
    end
 
    def update
-   	   @wine = Wine.find(params[:id])
    	   @wine.update(wine_params)
    	   redirect_to @wine
    end
 
    def destroy
-   	   @wine = Wine.find(params[:id])
    	   @wine.destroy
    	   redirect_to wines_url
    	end
@@ -55,6 +55,10 @@ class WinesController < ApplicationController
 
    def wine_params
    	   params.require(:wine).permit( :name, :year, :winery, :country, :varietal)
+   end
+
+   def set_wine_param
+   	  @wine = Wine.find(params[:id])
    end
 
   
