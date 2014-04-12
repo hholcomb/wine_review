@@ -1,8 +1,11 @@
-<h1>Wines Available as of <%= formatted_time(@available_at) %></h1>
-<ol>
+<h1>Current as of <%= formatted_time(@available_at) %></h1>
+<%= page_entries_info @wines %>
+
+<ul>
    <% @wines.each do |wine| %>
      <li><%= link_to(wine.name, wine) %> of varietal <%= wine.varietal %> from <%= wine.winery %></li>
    <% end %>
- </ol>  
+ </ul> 
+ <%= paginate @wines %>
 
  
