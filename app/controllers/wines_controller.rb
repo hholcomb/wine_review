@@ -7,6 +7,7 @@ class WinesController < ApplicationController
    def index
    	  @available_at = Time.now
    	  @wines = Wine.all
+       # flash[:notice] = "Today's special is buy 1 - drink 1"
    end
 
    def show
@@ -19,8 +20,11 @@ class WinesController < ApplicationController
 
    def create 
    	   @wine = Wine.new(wine_params)
-   	   @wine.save
-   	   redirect_to @wine
+   	   if @wine.save
+   	      redirect_to @wine, notice: "#{@wine.name} was created"
+         else
+            render :new
+         end
    end
 
    def edit
@@ -28,8 +32,11 @@ class WinesController < ApplicationController
    end
 
    def update
-   	   @wine.update(wine_params)
-   	   redirect_to @wine
+   	   if @wine.update(wine_params)
+   	      redirect_to @wine, notice: "#{@wine.name} was updated"
+         else
+            render :new
+         end
    end
 
    def destroy
