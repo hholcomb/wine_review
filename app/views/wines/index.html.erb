@@ -1,9 +1,8 @@
-<h1>Wines</h1>
-<p>Available as of <%= formatted_time(@available_at) %></p>
+<h1>Wines Available as of <%= formatted_time(@available_at) %></h1>
 <ol>
    <% @wines.each do |wine| %>
      <li><%= link_to(wine.name, wine) %> of varietal <%= wine.varietal %> from <%= wine.winery %></li>
    <% end %>
  </ol>  
 
- <%= link_to 'New Wine', new_wine_path %>
+ 

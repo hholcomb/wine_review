@@ -1,6 +1,6 @@
 <%= form_for(@wine) do |f| %>
    <%= render 'shared/validation_errors', object: @wine %>
-   
+
    <%= f.label :name %> <%= f.text_field :name, autofocus: true %><br />
    <%= f.label :year %> <%= f.text_field :year %><br />
    <%= f.label :winery %> <%= f.text_field :winery %><br />
@@ -10,7 +10,6 @@
    	  <%= f.submit 'save' %> 
         <%= button_to "Cancel", wines_path, :class => "button" , :method => :get %>
 
-   	  <%= link_to 'All Wines', wines_path %>
    </p>
 
 <% end %> 
