@@ -1,8 +1,11 @@
 WineReview::Application.routes.draw do
+ 
+
   #get "/wines" => "wines#index" , as: 'wines'
   #get "/wines/:id" => "wines#show", as: 'wine'
 
   resources :wines do
+    resources :log_entries
     get 'page/:page', :action => :index, :on => :collection
   end
 
