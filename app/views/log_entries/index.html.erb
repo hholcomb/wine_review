@@ -2,14 +2,21 @@
 <ol id="log_entries">
   <% @log_entries.each do |log_entry| %>
     <li>
-      <span class="log_entry"><%= pluralize(log_entry.stars, 'star') %></span>
+      <span class="log_entry"><%= pluralize(log_entry.rating, 'star') %></span>
       <span class="reviewer">by <%= log_entry.name %> </span>
-      <span class="date">
+      <span class="date"> recorded 
         <%= time_ago_in_words(log_entry.tasted_on) %> ago
       </span>
       <p>
-        &quot;<%= log_entry.comment %>&quot;
+        &quot;<%= log_entry.comments %>&quot;
       </p>
     </li>
   <% end %>
 </ol>
+<%= link_to 'Write a new Log Entry', new_wine_log_entry_path(@wine),
+    remote: true,
+    data: { 'update-target' => 'log_entry_form_container' },
+    class: 'btn btn-primary' %>
+
+<div id="log_entry_form_container"></div>
+

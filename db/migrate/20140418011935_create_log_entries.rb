@@ -4,8 +4,8 @@ class CreateLogEntries < ActiveRecord::Migration
       t.string :name
       t.integer :rating
       t.string :location
-      t.text, :comments
-      t.datetime :tested_on
+      t.string :comments
+      t.datetime :tasted_on
       t.references :wine, index: true
 
       t.timestamps

@@ -6,5 +6,10 @@ class Wine < ActiveRecord::Base
     validates :varietal, :inclusion => { :in => VARIETALS }
     validates :year, numericality: { only_integer: true }
 
-    has_many :log_entries
+    has_many :log_entries, dependent: :destroy
+
+    def average_rating
+    	log_entries.average(:rating)
+    end
+
 end

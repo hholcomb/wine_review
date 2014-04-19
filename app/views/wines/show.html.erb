@@ -16,7 +16,9 @@
 | <%= button_to 'Delete', @wine,  method: :delete,
              data: { confirm: 'Are you sure?' } %>
 <p>
-	Read all
+	Create a new Log Entry or read all
 	<%= link_to pluralize(@wine.log_entries.size, 'Log Entries'),
-	    wine_log_reviews_path(@wine) %>
+	    wine_log_entries_path(@wine) %> 
 </p>
+
+<p><label>Average Rating:</label> <%= format_average_ratings(@wine) %></p>
